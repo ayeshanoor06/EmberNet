@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary brand — ember orange -->
+    <color name="ember">#E8521A</color>
+    <color name="ember_dark">#9C3710</color>
+    <color name="ember_light">#FFD9C8</color>
+
+    <!-- Backgrounds -->
+    <color name="coal">#0F0E0C</color>
+    <color name="ash">#1C1A17</color>
+    <color name="smoke">#2A2720</color>
+    <color name="warm_gray">#6B6560</color>
+
+    <!-- Text -->
+    <color name="cream">#F2EDE5</color>
+    <color name="cream_dim">#B0A89E</color>
+
+    <!-- Signal colors -->
+    <color name="signal_green">#3DBA7F</color>
+    <color name="signal_green_dim">#1D6040</color>
+    <color name="signal_blue">#4B9EFF</color>
+    <color name="signal_yellow">#F5C842</color>
+
+    <!-- Danger -->
+    <color name="danger">#E24B4A</color>
+    <color name="danger_dim">#7A1F1F</color>
+
+    <!-- Surface tones -->
+    <color name="surface_card">#1C1A17</color>
+    <color name="surface_elevated">#2A2720</color>
+    <color name="divider">#2A2720</color>
+</resources>

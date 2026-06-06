@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/coal"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/screen_padding"
+        android:paddingEnd="@dimen/screen_padding"
+        android:paddingBottom="@dimen/space_xl">
+
+        <!-- ── Header ─────────────────────────────────────────── -->
+        <TextView
+            android:id="@+id/sos_header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sos_title"
+            android:textColor="@color/cream"
+            android:textSize="@dimen/text_title"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginTop="@dimen/space_lg"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/sos_header_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Offline emergency broadcast"
+            android:textColor="@color/warm_gray"
+            android:textSize="@dimen/text_sm"
+            android:layout_marginTop="@dimen/space_xs"
+            app:layout_constraintTop_toBottomOf="@id/sos_header_title"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- ── GPS + Battery info card ───────────────────────── -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/sos_info_card"
+            style="@style/Widget.EmberNet.Card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_lg"
+            app:layout_constraintTop_toBottomOf="@id/sos_header_sub"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/card_padding">
+
+                <!-- GPS block -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="GPS LOCATION"
+                        android:textColor="@color/warm_gray"
+                        android:textSize="@dimen/text_xs"
+                        android:letterSpacing="0.1"
+                        android:layout_marginBottom="@dimen/space_xs" />
+
+                    <TextView
+                        android:id="@+id/sos_gps_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Acquiring…"
+                        android:textColor="@color/cream"
+                        android:textSize="@dimen/text_sm"
+                        android:fontFamily="monospace" />
+
+                    <TextView
+                        android:id="@+id/sos_accuracy_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/warm_gray"
+                        android:textSize="@dimen/text_xs"
+                        android:fontFamily="monospace"
+                        android:layout_marginTop="2dp" />
+
+                </LinearLayout>
+
+                <!-- Vertical divider -->
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/divider"
+                    android:layout_marginStart="@dimen/space_sm"
+                    android:layout_marginEnd="@dimen/space_sm" />
+
+                <!-- Battery block -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="end">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BATTERY"
+                        android:textColor="@color/warm_gray"
+                        android:textSize="@dimen/text_xs"
+                        android:letterSpacing="0.1"
+                        android:layout_marginBottom="@dimen/space_xs" />
+
+                    <TextView
+                        android:id="@+id/sos_battery_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="—%"
+                        android:textColor="@color/signal_green"
+                        android:textSize="@dimen/text_title"
+                        android:fontFamily="sans-serif-medium" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- ── Big SOS button ─────────────────────────────────── -->
+        <FrameLayout
+            android:id="@+id/sos_button_container"
+            android:layout_width="@dimen/sos_button_size"
+            android:layout_height="@dimen/sos_button_size"
+            android:layout_marginTop="@dimen/space_xl"
+            app:layout_constraintTop_toBottomOf="@id/sos_info_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Outer pulse ring (animated when broadcasting) -->
+            <View
+                android:id="@+id/sos_pulse_ring"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/sos_pulse_ring"
+                android:alpha="0"
+                android:layout_gravity="center" />
+
+            <!-- Middle ring -->
+            <View
+                android:id="@+id/sos_mid_ring"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:background="@drawable/sos_mid_ring"
+                android:alpha="0"
+                android:layout_gravity="center" />
+
+            <!-- The actual button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_sos"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/ember"
+                android:text="SOS"
+                android:textColor="@color/cream"
+                android:textSize="28sp"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.15"
+                app:cornerRadius="@dimen/sos_button_radius"
+                app:elevation="8dp" />
+
+        </FrameLayout>
+
+        <!-- ── Status text below button ──────────────────────── -->
+        <TextView
+            android:id="@+id/sos_status_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/sos_waiting"
+            android:textColor="@color/warm_gray"
+            android:textSize="@dimen/text_sm"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/space_lg"
+            app:layout_constraintTop_toBottomOf="@id/sos_button_container"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- ── Broadcast stats card (hidden until broadcasting) ─ -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/sos_stats_card"
+            style="@style/Widget.EmberNet.Card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_lg"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/sos_status_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/card_padding">
+
+                <!-- Hops -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="HOPS"
+                        android:textColor="@color/warm_gray"
+                        android:textSize="@dimen/text_xs"
+                        android:letterSpacing="0.1" />
+
+                    <TextView
+                        android:id="@+id/sos_hop_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/signal_yellow"
+                        android:textSize="@dimen/text_headline"
+                        android:fontFamily="sans-serif-medium" />
+
+                </LinearLayout>
+
+                <!-- Peers reached -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PEERS REACHED"
+                        android:textColor="@color/warm_gray"
+                        android:textSize="@dimen/text_xs"
+                        android:letterSpacing="0.1" />
+
+                    <TextView
+                        android:id="@+id/sos_peers_reached"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/signal_green"
+                        android:textSize="@dimen/text_headline"
+                        android:fontFamily="sans-serif-medium" />
+
+                </LinearLayout>
+
+                <!-- Broadcasts sent -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BROADCASTS"
+                        android:textColor="@color/warm_gray"
+                        android:textSize="@dimen/text_xs"
+                        android:letterSpacing="0.1" />
+
+                    <TextView
+                        android:id="@+id/sos_broadcast_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/signal_blue"
+                        android:textSize="@dimen/text_headline"
+                        android:fontFamily="sans-serif-medium" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- ── Cancel button (hidden until broadcasting) ─────── -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_sos_cancel"
+            style="@style/Widget.EmberNet.Button.Outlined"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md"
+            android:text="@string/sos_cancel"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/sos_stats_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/sos_history_section"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_sos_cancel">
+
+            <include layout="@layout/fragment_alerts_history" />
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_test_alert"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md"
+            android:text="[DEBUG] Test Alert"
+            android:textColor="@color/warm_gray"
+            android:textSize="10sp"
+            app:layout_constraintTop_toBottomOf="@id/sos_history_section"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

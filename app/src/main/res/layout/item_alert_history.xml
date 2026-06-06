@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.EmberNet.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/space_sm"
+    app:cardBackgroundColor="@color/surface_card">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/card_padding"
+        android:gravity="center_vertical">
+
+        <!-- Red dot -->
+        <View
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:background="@drawable/circle_dot_red"
+            android:layout_marginEnd="@dimen/space_sm" />
+
+        <!-- Center — coords + time -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/history_item_coords"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="33.6938°N  73.0651°E"
+                android:textColor="@color/cream"
+                android:textSize="@dimen/text_sm"
+                android:fontFamily="monospace" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="2dp">
+
+                <TextView
+                    android:id="@+id/history_item_device"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Device A1B2"
+                    android:textColor="@color/warm_gray"
+                    android:textSize="@dimen/text_xs"
+                    android:fontFamily="monospace"
+                    android:layout_marginEnd="@dimen/space_sm" />
+
+                <TextView
+                    android:id="@+id/history_item_hops"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2 hops"
+                    android:textColor="@color/signal_yellow"
+                    android:textSize="@dimen/text_xs" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Right — time + battery -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="end"
+            android:layout_marginEnd="@dimen/space_sm">
+
+            <TextView
+                android:id="@+id/history_item_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="14:32"
+                android:textColor="@color/cream_dim"
+                android:textSize="@dimen/text_xs"
+                android:fontFamily="monospace" />
+
+            <TextView
+                android:id="@+id/history_item_battery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="72%"
+                android:textColor="@color/signal_green"
+                android:textSize="@dimen/text_xs"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginTop="2dp" />
+
+        </LinearLayout>
+
+        <!-- Delete button -->
+        <TextView
+            android:id="@+id/history_item_delete"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:text="✕"
+            android:textColor="@color/danger"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

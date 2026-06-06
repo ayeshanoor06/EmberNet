@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_map">
+
+    <fragment
+        android:id="@+id/nav_map"
+        android:name="com.ayesha.embernet.MapFragment"
+        android:label="@string/nav_map" />
+
+    <fragment
+        android:id="@+id/nav_sos"
+        android:name="com.ayesha.embernet.SosFragment"
+        android:label="@string/nav_sos" />
+
+    <fragment
+        android:id="@+id/nav_mesh"
+        android:name="com.ayesha.embernet.MeshFragment"
+        android:label="@string/nav_mesh" />
+
+</navigation>

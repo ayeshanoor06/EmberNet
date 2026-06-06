@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">EmberNet</string>
+
+    <!-- Bottom nav tabs -->
+    <string name="nav_map">Map</string>
+    <string name="nav_sos">SOS</string>
+    <string name="nav_mesh">Mesh</string>
+
+    <!-- Map screen -->
+    <string name="map_title">Offline Map</string>
+    <string name="map_saved">Map saved to device</string>
+    <string name="map_not_saved">No offline map downloaded</string>
+    <string name="download_map">Download area map</string>
+
+    <!-- SOS screen -->
+    <string name="sos_title">Emergency SOS</string>
+    <string name="sos_button">SEND SOS</string>
+    <string name="sos_broadcasting">Broadcasting…</string>
+    <string name="sos_cancel">Cancel broadcast</string>
+    <string name="sos_gps_label">GPS Location</string>
+    <string name="sos_battery_label">Battery</string>
+    <string name="sos_hops_label">Relay hops</string>
+    <string name="sos_waiting">Tap the button to broadcast your location to nearby devices</string>
+
+    <!-- Mesh screen -->
+    <string name="mesh_title">Mesh Network</string>
+    <string name="mesh_peers">Nearby peers</string>
+    <string name="mesh_status_off">Mesh offline</string>
+    <string name="mesh_status_on">Mesh active</string>
+    <string name="mesh_relay_count">Messages relayed</string>
+    <string name="mesh_range">Range: ~50 m</string>
+    <string name="mesh_bt">Bluetooth LE</string>
+    <string name="mesh_wifi">Wi-Fi Direct</string>
+
+    <!-- Alerts -->
+    <string name="alert_received">SOS Received</string>
+    <string name="alert_from">From device</string>
+    <string name="alert_location">Location</string>
+    <string name="alert_battery">Battery level</string>
+    <string name="alert_hops">Hops</string>
+    <string name="alert_time">Time</string>
+    <string name="alert_dismiss">Dismiss</string>
+    <string name="alert_show_map">Show on map</string>
+
+    <!-- Permissions -->
+    <string name="perm_rationale_location">EmberNet needs location access to find nearby peers and attach GPS to SOS messages.</string>
+    <string name="perm_rationale_bluetooth">EmberNet needs Bluetooth to broadcast SOS signals to nearby devices without internet.</string>
+    <string name="perm_denied">Permission denied. Some features will not work.</string>
+</resources>

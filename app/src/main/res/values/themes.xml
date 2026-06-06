@@ -1,0 +1,70 @@
+<resources>
+    <style name="Theme.EmberNet" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Brand -->
+        <item name="colorPrimary">@color/ember</item>
+        <item name="colorOnPrimary">@color/cream</item>
+        <item name="colorPrimaryContainer">@color/ember_light</item>
+        <item name="colorOnPrimaryContainer">@color/ember_dark</item>
+
+        <!-- Secondary (green = safe/active) -->
+        <item name="colorSecondary">@color/signal_green</item>
+        <item name="colorOnSecondary">@color/coal</item>
+        <item name="colorSecondaryContainer">@color/signal_green_dim</item>
+        <item name="colorOnSecondaryContainer">@color/cream</item>
+
+        <!-- Tertiary (blue = info) -->
+        <item name="colorTertiary">@color/signal_blue</item>
+        <item name="colorOnTertiary">@color/coal</item>
+
+        <!-- Surfaces -->
+        <item name="colorSurface">@color/ash</item>
+        <item name="colorOnSurface">@color/cream</item>
+        <item name="colorSurfaceVariant">@color/smoke</item>
+        <item name="colorOnSurfaceVariant">@color/cream_dim</item>
+
+        <!-- Background -->
+        <item name="android:colorBackground">@color/coal</item>
+        <item name="colorOnBackground">@color/cream</item>
+
+        <!-- Error -->
+        <item name="colorError">@color/danger</item>
+        <item name="colorOnError">@color/cream</item>
+
+        <!-- Outline -->
+        <item name="colorOutline">@color/warm_gray</item>
+
+        <!-- Status/nav bars -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <!-- Splash has pure black window background -->
+    <style name="Theme.EmberNet.Splash" parent="Theme.EmberNet">
+        <item name="android:windowBackground">@color/coal</item>
+    </style>
+
+    <!-- Card style used on all feature cards -->
+    <style name="Widget.EmberNet.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/surface_card</item>
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/divider</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <!-- Primary filled button (SOS, Download) -->
+    <style name="Widget.EmberNet.Button.Primary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/ember</item>
+        <item name="android:textColor">@color/cream</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:letterSpacing">0.1</item>
+    </style>
+
+    <!-- Outlined button (secondary actions) -->
+    <style name="Widget.EmberNet.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/warm_gray</item>
+        <item name="android:textColor">@color/cream_dim</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+</resources>

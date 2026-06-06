@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/coal"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/screen_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pre flight checklist"
+            android:textColor="@color/cream"
+            android:textSize="@dimen/text_headline"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginBottom="@dimen/space_xs" />
+
+        <!-- Checklist items -->
+        <LinearLayout
+            android:id="@+id/checklist_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/space_xl" />
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_close_preflight"
+            style="@style/Widget.EmberNet.Button.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Close Checklist" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

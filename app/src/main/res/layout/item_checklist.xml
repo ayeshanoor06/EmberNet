@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingTop="@dimen/space_sm"
+    android:paddingBottom="@dimen/space_sm"
+    android:paddingStart="@dimen/card_padding"
+    android:paddingEnd="@dimen/card_padding"
+    android:background="@color/surface_card"
+    android:layout_marginBottom="@dimen/space_sm">
+
+    <!-- Status icon -->
+    <TextView
+        android:id="@+id/check_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:gravity="center"
+        android:text="○"
+        android:textColor="@color/warm_gray"
+        android:textSize="16sp"
+        android:layout_marginEnd="@dimen/space_md" />
+
+    <!-- Label + sub -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/check_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Check item"
+            android:textColor="@color/cream"
+            android:textSize="@dimen/text_body"
+            android:fontFamily="sans-serif-medium" />
+
+        <TextView
+            android:id="@+id/check_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Details"
+            android:textColor="@color/warm_gray"
+            android:textSize="@dimen/text_xs"
+            android:layout_marginTop="2dp" />
+
+    </LinearLayout>
+
+    <!-- Status badge -->
+    <TextView
+        android:id="@+id/check_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CHECKING"
+        android:textColor="@color/warm_gray"
+        android:textSize="@dimen/text_xs"
+        android:fontFamily="monospace" />
+
+</LinearLayout>

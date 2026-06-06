@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/alert_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CC0F0E0C"
+    android:visibility="gone">
+
+    <!-- Alert card — slides up from bottom -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/alert_card"
+        style="@style/Widget.EmberNet.Card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/screen_padding"
+        android:layout_marginEnd="@dimen/screen_padding"
+        android:layout_marginBottom="@dimen/space_xl"
+        app:cardBackgroundColor="@color/ash"
+        app:cardCornerRadius="@dimen/radius_lg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/screen_padding">
+
+            <!-- Header row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="@dimen/space_md">
+
+                <!-- Pulsing red dot -->
+                <View
+                    android:id="@+id/alert_pulse_dot"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:background="@drawable/circle_dot_red"
+                    android:layout_marginEnd="@dimen/space_sm" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="SOS RECEIVED"
+                    android:textColor="@color/ember"
+                    android:textSize="@dimen/text_title"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.1" />
+
+                <!-- Device ID badge -->
+                <TextView
+                    android:id="@+id/alert_device_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DEVICE A1B2"
+                    android:textColor="@color/warm_gray"
+                    android:textSize="@dimen/text_xs"
+                    android:fontFamily="monospace"
+                    android:background="@drawable/badge_background_green"
+                    android:paddingStart="@dimen/space_sm"
+                    android:paddingEnd="@dimen/space_sm"
+                    android:paddingTop="@dimen/space_xs"
+                    android:paddingBottom="@dimen/space_xs" />
+
+            </LinearLayout>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider"
+                android:layout_marginBottom="@dimen/space_md" />
+
+            <!-- Detail grid — 2x2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/space_md">
+
+                <!-- GPS coords -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LOCATION"
+                        android:textColor="@color/warm_gray"
+                        android:textSize="@dimen/text_xs"
+                        android:letterSpacing="0.1"
+                        android:layout_marginBottom="2dp" />
+
+                    <TextView
+                        android:id="@+id/alert_coords"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="33.6938°N  73.0651°E"
+                        android:textColor="@color/cream"
+                        android:textSize="@dimen/text_sm"
+                        android:fontFamily="monospace" />
+
+                </LinearLayout>
+
+                <!-- Battery -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="end">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BATTERY"
+                        android:textColor="@color/warm_gray"
+                        android:textSize="@dimen/text_xs"
+                        android:letterSpacing="0.1"
+                        android:layout_marginBottom="2dp" />
+
+                    <TextView
+                        android:id="@+id/alert_battery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="72%"
+                        android:textColor="@color/signal_green"
+                        android:textSize="@dimen/text_sm"
+                        android:fontFamily="sans-serif-medium" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Second row — hops + time -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/space_lg">
+
+                <!-- Hops -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MESH HOPS"
+                        android:textColor="@color/warm_gray"
+                        android:textSize="@dimen/text_xs"
+                        android:letterSpacing="0.1"
+                        android:layout_marginBottom="2dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <!-- Hop node indicators — filled dynamically -->
+                        <TextView
+                            android:id="@+id/alert_hop_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2 hops"
+                            android:textColor="@color/signal_yellow"
+                            android:textSize="@dimen/text_sm"
+                            android:fontFamily="sans-serif-medium" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Time -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="end">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RECEIVED"
+                        android:textColor="@color/warm_gray"
+                        android:textSize="@dimen/text_xs"
+                        android:letterSpacing="0.1"
+                        android:layout_marginBottom="2dp" />
+
+                    <TextView
+                        android:id="@+id/alert_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="14:32:08"
+                        android:textColor="@color/cream"
+                        android:textSize="@dimen/text_sm"
+                        android:fontFamily="monospace" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Hop chain visual -->
+            <LinearLayout
+                android:id="@+id/alert_hop_chain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="@dimen/space_lg" />
+
+            <!-- Action buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/space_xs">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_alert_show_map"
+                    style="@style/Widget.EmberNet.Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/space_sm"
+                    android:text="@string/alert_show_map" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_alert_dismiss"
+                    style="@style/Widget.EmberNet.Button.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/alert_dismiss" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

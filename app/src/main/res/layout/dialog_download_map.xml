@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@color/ash">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Downloading offline map"
+        android:textColor="@color/cream"
+        android:textSize="@dimen/text_title"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginBottom="@dimen/space_xs" />
+
+    <!-- Subtitle -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stay on Wi-Fi. This takes 1–2 minutes."
+        android:textColor="@color/warm_gray"
+        android:textSize="@dimen/text_sm"
+        android:layout_marginBottom="@dimen/space_lg" />
+
+    <!-- Progress percentage -->
+    <TextView
+        android:id="@+id/download_progress_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0%"
+        android:textColor="@color/ember"
+        android:textSize="@dimen/text_headline"
+        android:fontFamily="sans-serif-medium"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/space_sm" />
+
+    <!-- Progress bar -->
+    <ProgressBar
+        android:id="@+id/download_progress"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:progressDrawable="@drawable/progress_bar_ember"
+        android:max="100"
+        android:progress="0"
+        android:layout_marginBottom="@dimen/space_sm" />
+
+    <!-- Tile counter -->
+    <TextView
+        android:id="@+id/download_tiles_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 / 0 tiles"
+        android:textColor="@color/warm_gray"
+        android:textSize="@dimen/text_xs"
+        android:fontFamily="monospace"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/space_lg" />
+
+    <!-- Cancel button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_cancel_download"
+        style="@style/Widget.EmberNet.Button.Outlined"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel" />
+
+</LinearLayout>
